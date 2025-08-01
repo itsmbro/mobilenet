@@ -1,15 +1,12 @@
 import streamlit as st
 import paho.mqtt.publish as publish
-import os
-from dotenv import load_dotenv
 
-# === CONFIG ===
-load_dotenv()
-BROKER = os.getenv("MQTT_BROKER")
-PORT = int(os.getenv("MQTT_PORT"))
-USERNAME = os.getenv("MQTT_USERNAME")
-PASSWORD = os.getenv("MQTT_PASSWORD")
-TOPIC = os.getenv("MQTT_TOPIC")
+# === CONFIG da secrets.toml ===
+BROKER = st.secrets["MQTT_BROKER"]
+PORT = int(st.secrets["MQTT_PORT"])
+USERNAME = st.secrets["MQTT_USERNAME"]
+PASSWORD = st.secrets["MQTT_PASSWORD"]
+TOPIC = st.secrets["MQTT_TOPIC"]
 
 st.set_page_config(layout="wide")
 st.title("🎥 Controllo Rilevamento Oggetti - MobileNet + MQTT + Streamlit")
